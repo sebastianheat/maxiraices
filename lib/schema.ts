@@ -5,7 +5,20 @@ import {
   integer,
   numeric,
   date,
+  boolean,
+  timestamp,
 } from "drizzle-orm/pg-core";
+
+// Usuarios del panel (autenticación + roles)
+export const usuarios = pgTable("usuarios", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  nombre: text("nombre").notNull(),
+  rol: text("rol").notNull().default("ejecutivo"), // 'admin' | 'ejecutivo'
+  passwordHash: text("password_hash").notNull(),
+  activo: boolean("activo").notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
 
 // Movimientos financieros (ingresos y egresos)
 export const movimientos = pgTable("movimientos", {
