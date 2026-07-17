@@ -8,6 +8,7 @@ const NAV = [
   { href: "/", label: "Resumen Gerencial", icon: "📊" },
   { href: "/financiero", label: "Financiero", icon: "💰" },
   { href: "/operativo", label: "Operativo", icon: "🌱" },
+  { href: "/gastos", label: "Gastos (Drive)", icon: "🧾" },
 ];
 
 export default function Sidebar({

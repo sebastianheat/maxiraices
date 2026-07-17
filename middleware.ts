@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { COOKIE_NAME, verifyToken } from "@/lib/session";
 
-// Rutas públicas (no requieren sesión).
-const PUBLICAS = ["/login", "/api/auth/login"];
+// Rutas públicas (no requieren sesión de usuario).
+// /api/cron se protege aparte con CRON_SECRET dentro del handler.
+const PUBLICAS = ["/login", "/api/auth/login", "/api/cron"];
 
 // Rutas solo para administradores.
 const SOLO_ADMIN = ["/equipo", "/api/usuarios"];

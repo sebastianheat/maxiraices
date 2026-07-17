@@ -117,6 +117,45 @@ export function ProduccionChart({
   );
 }
 
+export function GastoMesChart({
+  data,
+}: {
+  data: { etiqueta: string; total: number }[];
+}) {
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={data} margin={{ top: 8, right: 8, left: 8, bottom: 0 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#eef0ed" vertical={false} />
+        <XAxis dataKey="etiqueta" tick={{ fontSize: 11, fill: "#6b7c72" }} axisLine={false} tickLine={false} />
+        <YAxis tickFormatter={ejeMonto} tick={{ fontSize: 12, fill: "#6b7c72" }} axisLine={false} tickLine={false} width={48} />
+        <Tooltip formatter={tooltipMonto} cursor={{ fill: "#00000008" }} />
+        <Bar dataKey="total" name="Gasto" fill={ROJO} radius={[4, 4, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+export function BarrasHorizontales({
+  data,
+  color = "#16a34a",
+}: {
+  data: { etiqueta: string; total: number }[];
+  color?: string;
+}) {
+  const alto = Math.max(220, data.length * 34 + 40);
+  return (
+    <ResponsiveContainer width="100%" height={alto}>
+      <BarChart data={data} layout="vertical" margin={{ top: 4, right: 16, left: 8, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#eef0ed" horizontal={false} />
+        <XAxis type="number" tickFormatter={ejeMonto} tick={{ fontSize: 11, fill: "#6b7c72" }} axisLine={false} tickLine={false} />
+        <YAxis type="category" dataKey="etiqueta" width={140} tick={{ fontSize: 11, fill: "#3a4a42" }} axisLine={false} tickLine={false} />
+        <Tooltip formatter={tooltipMonto} cursor={{ fill: "#00000008" }} />
+        <Bar dataKey="total" name="Gasto" fill={color} radius={[0, 4, 4, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
 export function CostosPieChart({
   data,
 }: {

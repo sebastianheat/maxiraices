@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:seed": "tsx db/seed.ts",
-    "auth:setup": "tsx db/auth-setup.ts"
+    "auth:setup": "tsx db/auth-setup.ts",
+    "sync:once": "tsx db/sync-once.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
@@ -17,7 +18,8 @@
     "next": "^16.2.9",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "recharts": "^2.15.0"
+    "recharts": "^2.15.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
